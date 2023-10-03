@@ -28,11 +28,11 @@
 
 export default {
   name: 'HomePage',
-  data() {
-    return {
-      
-    }
-  },
+  computed: {
+      products() {
+        return this.$store.state.products;
+      }
+    },
 
   methods: {
    
