@@ -29,7 +29,7 @@
             <span class="amount">R$ {{ (product.price * product.quantity).toFixed(2) }}</span>
           </div>
         </div>
-        <div class="grand-total">Total do pedido: R$ 22.90</div>
+        <div class="grand-total">Total do pedido: R$ {{orderTotal()}}</div>
       </template>
       <template v-else>
          <h4>Nenhum item no carrinho</h4>
@@ -44,7 +44,13 @@ import { mapState } from "vuex";
 export default {
   name: "ShoppingBasket",
   computed: mapState(["productsInBag"]),
-  methods: {},
+  methods: {
+    orderTotal() {
+      let total = 0;
+      this.productsInBag.forEach(product => total += product.price * product.quantity);
+      return total.toFixed(2)
+    }
+  },
 };
 </script>
 
